@@ -25,10 +25,4 @@ jobs:
           path: output.json 
         if: always()
 
-
-
-          
-          path: output.json
-        if: always()
-          
     
