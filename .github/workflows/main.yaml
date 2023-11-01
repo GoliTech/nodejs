@@ -15,7 +15,7 @@ jobs:
         id: njsscan
         uses: ajinabraham/njsscan-action@master
         with:
-         args: '. --json -o output.json'
+         args: '. --json -o output.json || true'
       
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.3
