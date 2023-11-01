@@ -10,18 +10,17 @@ jobs:
     runs-on: ubuntu-20.04                     # similar to "image" in GitLab
     steps:
       - uses: actions/checkout@v4
-      
-      - name: nodejsscan scan
-        id: njsscan
-        uses: ajinabraham/njsscan-action@master
-        with:
-         args: '. --json -o output.json || true'
-      
+
+      - run: pip3 install njsscan==0.3.4 libsast
+      - run: njsscan --json -o output.json .
+        continue-on-error: true
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.3
         with:
           name: njscan
           path: output.json 
         if: always()
+
+
 
     
