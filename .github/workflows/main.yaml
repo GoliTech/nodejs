@@ -14,9 +14,15 @@ jobs:
       - name: install njscan and libsast
         run: pip3 install njsscan==0.3.4 libsast
       
-      - name: scan the project
-        run: njsscan --json -o output.json .
-        continue-on-error: true
+      #- name: scan the project
+       # run: njsscan --json -o output.json .
+        #continue-on-error: true
+        
+      - name: nodejsscan scan
+        id: njsscan
+        uses: ajinabraham/njsscan-action@master
+        with:
+         args: '. --json -o output.json || true'
       
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.3
